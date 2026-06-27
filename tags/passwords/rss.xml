@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Famoto blog - passwords</title>
+      <link>https://famoto.github.io</link>
+      <description>A nerd about everything</description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://famoto.github.io/tags/passwords/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Sat, 27 Jun 2026 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>Choosing the Right Parameters for Argon2id Password Hashing</title>
+          <pubDate>Sat, 27 Jun 2026 00:00:00 +0000</pubDate>
+          <author>Famoto</author>
+          <link>https://famoto.github.io/argon2id-parameters/</link>
+          <guid>https://famoto.github.io/argon2id-parameters/</guid>
+          <description xml:base="https://famoto.github.io/argon2id-parameters/">&lt;p&gt;Argon2id is one of the most secure options for password storage. Its memory-hard design frustrates GPU cracking, yet the algorithm is flexible enough to run efficiently on commodity hardware. Picking good parameters, however, is critical. The goal is to slow down attackers as much as possible while keeping legitimate logins snappy.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;key-parameters-in-argon2id&quot;&gt;Key Parameters in Argon2id&lt;&#x2F;h2&gt;
+&lt;p&gt;Argon2id exposes three knobs:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Time cost (T)&lt;&#x2F;strong&gt; – how many times the memory is filled and processed.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Memory cost (M)&lt;&#x2F;strong&gt; – how much RAM in kibibytes each hash consumes.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Parallelism (p)&lt;&#x2F;strong&gt; – the number of threads used.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;T and M together determine the real cost for an attacker. Raising either one increases the work required to compute a single hash. In practice, you want to push both as high as your environment will allow without degrading the user experience.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;benchmarking-your-environment&quot;&gt;Benchmarking Your Environment&lt;&#x2F;h2&gt;
+&lt;p&gt;Start by measuring how fast Argon2id runs with different values. Most libraries provide a benchmarking mode. With the reference &lt;code&gt;argon2&lt;&#x2F;code&gt; binary, pass a password on stdin, provide a salt, and select Argon2id explicitly:&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo z-code&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-support&quot;&gt;echo&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant&quot;&gt; -&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant&quot;&gt;n&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-punctuation z-definition z-string z-begin&quot;&gt; &amp;quot;&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt;password&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-punctuation z-definition z-string z-end&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword&quot;&gt; |&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-entity z-name z-function&quot;&gt; argon2&lt;&#x2F;span&gt;&lt;span class=&quot;z-string&quot;&gt; somesalt&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant&quot;&gt; -&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant&quot;&gt;id&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant&quot;&gt; -&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant&quot;&gt;t&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant&quot;&gt; 3&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant&quot;&gt; -&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant&quot;&gt;m&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant&quot;&gt; 15&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant&quot;&gt; -&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant&quot;&gt;p&lt;&#x2F;span&gt;&lt;span class=&quot;z-constant&quot;&gt; 1&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;This will hash using &lt;code&gt;t=3&lt;&#x2F;code&gt;, &lt;code&gt;m=2^15 KiB&lt;&#x2F;code&gt; (&lt;code&gt;32_768 KiB&lt;&#x2F;code&gt;, or 32 MiB), and &lt;code&gt;p=1&lt;&#x2F;code&gt;. Note the runtime, then adjust &lt;code&gt;-t&lt;&#x2F;code&gt; and &lt;code&gt;-m&lt;&#x2F;code&gt; higher or lower and run again. Record how long each combination takes so you understand the trade-offs.&lt;&#x2F;p&gt;
+&lt;p&gt;Aim for a target runtime per hash of somewhere between &lt;strong&gt;200–500 ms&lt;&#x2F;strong&gt; on your production hardware. Values in that range are short enough that a user login feels immediate, yet they make large-scale cracking expensive.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;argon2id-vs-gpu-cracking&quot;&gt;Argon2id vs GPU Cracking&lt;&#x2F;h2&gt;
+&lt;p&gt;Specialized cracking rigs rely on GPUs or FPGAs to compute billions of hashes in parallel. Argon2id&#x27;s memory hardness undercuts that advantage by forcing each password guess to repeatedly read and write a big region of RAM. GPUs have tremendous compute power but relatively little memory per core. When &lt;code&gt;M&lt;&#x2F;code&gt; is set high, they must constantly swap data, which destroys their throughput. CPUs, with easier access to main memory, handle these workloads with much less slowdown.&lt;&#x2F;p&gt;
+&lt;p&gt;Beyond that, Argon2id requires filling memory with pseudorandom data for every password guess. Attackers can&#x27;t reuse one block of memory for all candidates, so the cost multiplies with each attempt. That property, combined with strong memory requirements, makes large-scale GPU attacks far less attractive.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;balancing-t-and-m&quot;&gt;Balancing T and M&lt;&#x2F;h2&gt;
+&lt;p&gt;When tuning, prioritize memory first. Increasing &lt;code&gt;M&lt;&#x2F;code&gt; dramatically raises the barrier for GPUs and FPGAs because those platforms are often memory limited. Try to allocate at least &lt;strong&gt;64 MiB&lt;&#x2F;strong&gt; if your servers have the RAM to spare. In the reference CLI this is &lt;code&gt;-m 16&lt;&#x2F;code&gt;; in an encoded Argon2 hash, the same setting appears as &lt;code&gt;m=65536&lt;&#x2F;code&gt; because the PHC string stores memory in kibibytes. Many modern systems can comfortably handle &lt;code&gt;128 MiB&lt;&#x2F;code&gt; or more for each concurrent hash.&lt;&#x2F;p&gt;
+&lt;p&gt;Once memory is set, adjust the time cost. A higher &lt;code&gt;T&lt;&#x2F;code&gt; multiplies the work required without extra memory overhead. For web logins you generally want the combined runtime of &lt;code&gt;T&lt;&#x2F;code&gt; and &lt;code&gt;M&lt;&#x2F;code&gt; to fall under half a second. If you have plenty of CPU headroom you can push toward the upper end of the target range. If your server is under heavy load, dropping &lt;code&gt;T&lt;&#x2F;code&gt; slightly keeps response times consistent.
+In practice, &lt;code&gt;M&lt;&#x2F;code&gt; shapes the attacker&#x27;s hardware choices, while &lt;code&gt;T&lt;&#x2F;code&gt; dictates how long each attempt takes. GPUs excel at running thousands of threads but they must share limited memory bandwidth. By forcing every thread to access large chunks of RAM, you neutralize that parallel edge. Once you know how much memory you can spare per hash, increase &lt;code&gt;T&lt;&#x2F;code&gt; until CPU usage or page latency becomes noticeable. This lets you push &lt;code&gt;M&lt;&#x2F;code&gt; as high as possible and then tune &lt;code&gt;T&lt;&#x2F;code&gt; to hit your target runtime without hurting the user experience.&lt;&#x2F;p&gt;
+&lt;p&gt;Always test with the same parallelism that production will use. Argon2&#x27;s &lt;code&gt;m&lt;&#x2F;code&gt; is the total memory for one hash; &lt;code&gt;p&lt;&#x2F;code&gt; splits that memory across lanes or threads rather than multiplying it. Concurrent login requests do multiply memory use, so ten simultaneous &lt;code&gt;64 MiB&lt;&#x2F;code&gt; hashes can require about &lt;code&gt;640 MiB&lt;&#x2F;code&gt; before application overhead. Monitor memory usage while benchmarking so you do not accidentally starve other processes.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;example-tuning-session&quot;&gt;Example Tuning Session&lt;&#x2F;h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Start with &lt;code&gt;-m 16&lt;&#x2F;code&gt; (64 MiB in the reference CLI) and &lt;code&gt;t=2&lt;&#x2F;code&gt;.&lt;&#x2F;li&gt;
+&lt;li&gt;Measure the runtime. If it is well below 200 ms, raise &lt;code&gt;m&lt;&#x2F;code&gt; first—try &lt;code&gt;-m 17&lt;&#x2F;code&gt; (128 MiB in the reference CLI).&lt;&#x2F;li&gt;
+&lt;li&gt;If memory is maxed out but runtime is still low, increment &lt;code&gt;t&lt;&#x2F;code&gt; until you approach 300–400 ms per hash.&lt;&#x2F;li&gt;
+&lt;li&gt;If the server begins to slow under load, scale back &lt;code&gt;t&lt;&#x2F;code&gt; slightly but keep memory high.&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;By iterating like this you can zero in on parameters that maximize attacker cost without annoying your users.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;storing-parameters-alongside-hashes&quot;&gt;Storing Parameters Alongside Hashes&lt;&#x2F;h2&gt;
+&lt;p&gt;A common practice is to store the chosen &lt;code&gt;t&lt;&#x2F;code&gt;, &lt;code&gt;m&lt;&#x2F;code&gt;, and &lt;code&gt;p&lt;&#x2F;code&gt; with each user&#x27;s password hash. That way you can increase defaults for new accounts without forcing resets. It also lets you adapt if hardware improves or if you deploy to stronger servers in the future.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;personal-approach&quot;&gt;Personal Approach&lt;&#x2F;h2&gt;
+&lt;p&gt;My strategy is simple: begin with OWASP&#x27;s minimum recommended settings, then push &lt;code&gt;m&lt;&#x2F;code&gt; and &lt;code&gt;t&lt;&#x2F;code&gt; upward until my hardware or response times start to complain. The maximum values the server can handle form the upper bound. From there I dial back toward the minimums until logins feel instantaneous. Meeting in the middle offers a comfortable balance—large enough to frustrate crackers, yet still snappy for real users.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;&#x2F;h2&gt;
+&lt;p&gt;Argon2id&#x27;s strength comes from its tunable memory and time requirements. For strong security:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Allocate as much memory as your servers can tolerate, ideally 64–128 MiB per hash.&lt;&#x2F;li&gt;
+&lt;li&gt;Increase the time cost until each hash takes roughly 200–500 ms under typical load.&lt;&#x2F;li&gt;
+&lt;li&gt;Revisit these settings periodically and adjust upward as hardware becomes faster.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;A careful balance of &lt;code&gt;T&lt;&#x2F;code&gt; and &lt;code&gt;M&lt;&#x2F;code&gt; provides maximum resistance to password cracking while keeping login performance smooth.&lt;&#x2F;p&gt;
+</description>
+      </item>
+    </channel>
+</rss>
