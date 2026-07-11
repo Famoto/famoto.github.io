@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Famoto blog - cryptographie</title>
+      <link>https://famoto.github.io</link>
+      <description>A nerd about everything</description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://famoto.github.io/tags/cryptographie/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Sat, 27 Jun 2026 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>The Secret Life of Cryptographic Properties</title>
+          <pubDate>Sat, 27 Jun 2026 00:00:00 +0000</pubDate>
+          <author>Famoto</author>
+          <link>https://famoto.github.io/cryptographic-properties/</link>
+          <guid>https://famoto.github.io/cryptographic-properties/</guid>
+          <description xml:base="https://famoto.github.io/cryptographic-properties/">&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;“What do you want me to do, stop encrypting?&lt;&#x2F;em&gt;
+&lt;em&gt;Then the attackers will keep winning!”&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;— (Almost) every security engineer at 2 a.m.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h2 id=&quot;first-a-quick-confession&quot;&gt;First, a quick confession&lt;&#x2F;h2&gt;
+&lt;p&gt;I’ve watched perfectly intelligent people mutter &lt;em&gt;“we use TLS, we’re safe”&lt;&#x2F;em&gt; while shipping source code over public Wi-Fi. I’ve seen product managers swear that a GDPR checkbox magically invokes the spirit of Alan Turing to bless their SaaS. And I’ve sat through more than one meeting where someone confused &lt;em&gt;integrity&lt;&#x2F;em&gt; with “put the file on S3 and hope for the best.”&lt;&#x2F;p&gt;
+&lt;p&gt;If any of that sounds familiar, buckle up. We’re about to tour the &lt;strong&gt;fifteen security properties that turn “encrypted” into actually-robust communications&lt;&#x2F;strong&gt;—but in plain English, with a dash of gallows humour, and absolutely zero PowerPoint gradients.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h1 id=&quot;1-confidentiality-the-art-of-mind-your-own-business&quot;&gt;1. Confidentiality: the art of mind-your-own-business&lt;&#x2F;h1&gt;
+&lt;p&gt;Huge shocker: scrambling data so eavesdroppers can’t read it. You’ve met AES-GCM in TLS and ChaCha20-Poly1305 in every mobile messenger worth its salt. Without it, your login token is basically a bumper sticker for hackers that reads “steal me.”&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;2-integrity-tamper-tape-for-packets&quot;&gt;2. Integrity: tamper tape for packets&lt;&#x2F;h1&gt;
+&lt;p&gt;Encryption hides what you said; integrity (HMACs, AEAD tags) proves no-one rewrote it to &lt;em&gt;“send all funds to 0xDEADBEEF.”&lt;&#x2F;em&gt; One flipped bit? Connection terminated, developer mildly panics, nobody gets robbed. Good trade.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;3-authentication-a-secret-handshake-that-actually-works&quot;&gt;3. Authentication: a secret handshake that actually works&lt;&#x2F;h1&gt;
+&lt;p&gt;Knowing &lt;em&gt;who&lt;&#x2F;em&gt; you’re talking to matters. Certificates, SSH host keys, WebAuthn tokens—they all shout “I am the droid you’re looking for.” Skip this and congratulations: you’ve built an unencrypted postcard exchange with extra steps.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;4-non-repudiation-the-adulting-feature&quot;&gt;4. Non-repudiation: the adulting feature&lt;&#x2F;h1&gt;
+&lt;p&gt;Digital signatures that survive courtroom cross-examination. Great for contracts, invoices, and those times when someone emails &lt;em&gt;“deploy-to-prod, trust me”&lt;&#x2F;em&gt; and later swears they never said that. Spoiler: the log says otherwise.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;5-availability-because-downtime-security&quot;&gt;5. Availability: because downtime ≠ security&lt;&#x2F;h1&gt;
+&lt;p&gt;A service that’s “secure” but 404s under a sneeze is just an expensive doorstop. Rate-limit, add captchas, maybe sprinkle in client puzzles so the botnets burn calories while real users keep chatting.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;6-access-control-vip-ropes-at-the-crypto-club&quot;&gt;6. Access control: VIP ropes at the crypto club&lt;&#x2F;h1&gt;
+&lt;p&gt;It’s not enough to lock the front door; you need bouncers inside too. Capability tokens, short-lived OAuth scopes—whatever prevents the analytics micro-service from reading HR’s salary CSV at 3 a.m.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;7-forward-secrecy-protecting-yesterday-from-tomorrow-s-breach&quot;&gt;7. Forward secrecy: protecting yesterday from tomorrow’s breach&lt;&#x2F;h1&gt;
+&lt;p&gt;Compromise the server key next week and last week’s messages remain unreadable. That’s ECDHE or X25519 doing daily key-burning rituals on your behalf. The Ops team sleeps better; auditors still find something else to nag about.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;8-backward-future-secrecy-new-phone-who-dis-for-keys&quot;&gt;8. Backward (future) secrecy: “new phone, who dis?”—for keys&lt;&#x2F;h1&gt;
+&lt;p&gt;Flip side of forward secrecy. If malware grabs &lt;em&gt;today’s&lt;&#x2F;em&gt; session key, it still can’t decipher &lt;em&gt;tomorrow’s&lt;&#x2F;em&gt; traffic because the protocol ratchets forward faster than your intruder can type &lt;code&gt;exfiltrate.sh&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;9-freshness-anti-replay-groundhog-day-prevention&quot;&gt;9. Freshness &amp;amp; anti-replay: groundhog day prevention&lt;&#x2F;h1&gt;
+&lt;p&gt;Attackers love pushing the &lt;em&gt;“pay again”&lt;&#x2F;em&gt; button. Nonces, sequence numbers, and timestamps ensure that yesterday’s valid packet is today’s suspicious deja vu and gets binned accordingly.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;10-deniability-off-the-record-on-purpose&quot;&gt;10. Deniability: off-the-record, on purpose&lt;&#x2F;h1&gt;
+&lt;p&gt;Signal and OTR let you verify a live conversation yet later say &lt;em&gt;“could’ve been anyone.”&lt;&#x2F;em&gt; Journalists appreciate it. Compliance officers develop a rash. Choose your adventure.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;11-traffic-flow-confidentiality-hiding-the-who-when-how-much&quot;&gt;11. Traffic-flow confidentiality: hiding the &lt;strong&gt;who&#x2F;when&#x2F;how much&lt;&#x2F;strong&gt;&lt;&#x2F;h1&gt;
+&lt;p&gt;Encrypting payloads is cute; hiding metadata is survival. Mix-nets, onion routing, and good old-fashioned padding blur the social graph so well that even your phone bill gets jealous.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;12-anonymity-unlinkability-cloak-of-invisibility-version-2-0&quot;&gt;12. Anonymity &amp;amp; unlinkability: cloak of invisibility, version 2.0&lt;&#x2F;h1&gt;
+&lt;p&gt;Ring signatures, zero-knowledge proofs—math that lets you prove you’re &lt;em&gt;someone&lt;&#x2F;em&gt; in the group without outing &lt;em&gt;which&lt;&#x2F;em&gt; someone. Perfect for whistle-blowers; less ideal for loyalty-card programs.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;13-auditability-the-black-box-recorder&quot;&gt;13. Auditability: the black box recorder&lt;&#x2F;h1&gt;
+&lt;p&gt;Sometimes you need receipts. Signed, append-only logs (hello, Certificate Transparency) can prove that a certificate or precertificate was logged and help monitors catch misissuance. Useful accountability, yes; a magic who-did-what-when camera, no—and public CT entries still expose certificate metadata.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;14-perfect-secrecy-because-claude-shannon-was-extra&quot;&gt;14. Perfect secrecy: because Claude Shannon was extra&lt;&#x2F;h1&gt;
+&lt;p&gt;One-time pads guarantee zero information leakage—provided your key is as long as the message, randomly generated, and never reused. In the real world that’s like fueling your car with unicorn tears: admirable, impractical, but a nice benchmark.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;15-robustness-crypto-that-doesn-t-face-plant-on-packet-loss&quot;&gt;15. Robustness: crypto that doesn’t face-plant on packet loss&lt;&#x2F;h1&gt;
+&lt;p&gt;Fault-tolerant group chat, AEAD modes that fail closed, Byzantine-resilient consensus—because networks drop packets, people yank plugs, and your protocol must keep calm and carry on.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h2 id=&quot;how-the-sausage-gets-wrapped&quot;&gt;How the sausage gets wrapped&lt;&#x2F;h2&gt;
+&lt;p&gt;No single protocol sports &lt;em&gt;all&lt;&#x2F;em&gt; fifteen properties; life is trade-offs. TLS 1.3 nails confidentiality, integrity, authentication, and forward secrecy in one handshake but punts on anonymity. Signal piles on deniability and backward secrecy yet can’t satisfy auditors hunting non-repudiation. Pick the mix that fits your threat model:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Corporate e-signing?&lt;&#x2F;strong&gt; Favour non-repudiation and audit logs.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Messaging under authoritarian regimes?&lt;&#x2F;strong&gt; Double down on anonymity and deniability.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Banking APIs?&lt;&#x2F;strong&gt; Throw the whole kitchen sink in, add rate-limits, stash a lawyer onsite.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;parting-wisdom-the-sticky-note-version&quot;&gt;Parting wisdom (the sticky-note version)&lt;&#x2F;h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Encrypt everything, authenticate everyone.&lt;&#x2F;strong&gt; Skipping either is how data breaches get origin stories.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Rotate keys like gym towels.&lt;&#x2F;strong&gt; Fresh keys smell nicer to your CISO.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Metadata leaks faster than plaintext.&lt;&#x2F;strong&gt; Pad, mix, relay. Repeat.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Logs or it didn’t happen.&lt;&#x2F;strong&gt; But log the right things, lest privacy come for your badge.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Assume failure, design for grace.&lt;&#x2F;strong&gt; The Internet is powered by coffee and duct tape; your protocol must survive both running out.&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;Now go forth, weld these properties into your next product, and when someone says &lt;em&gt;“it’s fine, Slack is encrypted, right?”&lt;&#x2F;em&gt;, you’ll have fifteen articulate reasons to schedule an emergency architecture review—plus the professional gravitas to pull it off without memes (unless the memes help; they often do).&lt;&#x2F;p&gt;
+</description>
+      </item>
+    </channel>
+</rss>

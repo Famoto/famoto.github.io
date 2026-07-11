@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <!-- Enable responsiveness on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+    <meta name="description" content="A nerd about everything" />
+    <meta property="og:description" content="A nerd about everything" />
+    <meta property="twitter:description" content="A nerd about everything" />
+    
+
+    <!-- Title -->
+      
+
+    <title>
+    
+    The Secret Life of Cryptographic Properties
+    
+</title>
+
+    <!-- Additional Facebook Meta Tags -->
+    <meta
+      property="og:url"
+      content="https:&#x2F;&#x2F;famoto.github.io&#x2F;cryptographic-properties&#x2F;"
+    />
+    <meta
+      property="og:type"
+      content="article"
+    />
+    <meta property="og:title" content="The Secret Life of Cryptographic Properties" />
+    <meta
+      property="og:image"
+      content="https:&#x2F;&#x2F;famoto.github.io/icons/favicon/web-app-manifest-512x512.avif"
+    />
+
+    <!-- Additional Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      property="twitter:url"
+      content="https:&#x2F;&#x2F;famoto.github.io&#x2F;cryptographic-properties&#x2F;"
+    />
+    <meta name="twitter:title" content="The Secret Life of Cryptographic Properties" />
+    <meta
+      name="twitter:image"
+      content="https:&#x2F;&#x2F;famoto.github.io/icons/favicon/web-app-manifest-512x512.avif"
+    />
+
+    <!-- Favicons -->
+    
+    <link
+      rel="icon"
+      type="image/avif"
+      href="https:&#x2F;&#x2F;famoto.github.ioicons/favicon/favicon-96x96.avif"
+      sizes="96x96"
+    />
+    <link
+      rel="icon"
+      type="image/avif"
+      href="https:&#x2F;&#x2F;famoto.github.ioicons/favicon/favicon.avif"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="https:&#x2F;&#x2F;famoto.github.ioicons/favicon/apple-touch-icon.avif"
+    />
+    <meta name="apple-mobile-web-app-title" content="The Secret Life of Cryptographic Properties" />
+    <link
+      rel="manifest"
+      href="https:&#x2F;&#x2F;famoto.github.ioicons/favicon/site.webmanifest"
+    />
+    
+
+    <!-- RSS Feed -->
+    
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="RSS"
+      href="https://famoto.github.io/rss.xml"
+    />
+    
+
+    <!-- Load Styles -->
+    <link
+      rel="stylesheet"
+      href="https://famoto.github.io/site.css"
+    />
+
+    <!-- Pass Theme Preference as Data Attribute -->
+    <script>
+      document.documentElement.dataset.theme =
+        "toggle";
+    </script>
+
+    <!-- Reference return to click position script -->
+    <script src="https://famoto.github.io/js/reference-return.js"></script>
+  </head>
+
+  <body class="hack dark main container">
+    
+    
+         
+    <header class="nav-header">
+      <nav
+        itemscope
+        itemtype="http://schema.org/SiteNavigationElement"
+        class="navbar"
+      >
+        <section class="nav-links">
+          
+          <a
+            itemprop="url"
+            class=""
+            href="https://famoto.github.io"
+          >
+            <span itemprop="name">Blog</span>
+          </a>
+          
+          <a
+            itemprop="url"
+            class=""
+            href="https://famoto.github.io/tags"
+          >
+            <span itemprop="name">Tags</span>
+          </a>
+          
+        </section>
+      </nav>
+      <aside class="user-actions-container">
+        
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          class="search-icon"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+          />
+        </svg>
+        <input type="text" id="search" placeholder="Search..." />
+        <section class="search-results" aria-live="polite">
+          <article class="search-results__items" role="list"></article>
+        </section>
+         
+        <a id="dark-mode-toggle" href="#">
+          <img
+            src="https://famoto.github.io/icons/sun.svg"
+            id="sun-icon"
+            alt="Light mode"
+          />
+          <img
+            src="https://famoto.github.io/icons/moon.svg"
+            id="moon-icon"
+            alt="Dark mode"
+          />
+        </a>
+         
+        <a
+          href="https://famoto.github.io/rss.xml"
+          class="feed-icon"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="https://famoto.github.io/icons/rss.svg"
+            id="rss-icon"
+            alt="RSS feed"
+            class="social-icon"
+          />
+        </a>
+         
+        <a
+          href="https:&#x2F;&#x2F;github.com&#x2F;Famoto&#x2F;"
+          class="feed-icon"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="https://famoto.github.io/icons/github.svg"
+            id="github-icon"
+            alt="GitHub"
+            class="social-icon"
+          />
+        </a>
+        
+      </aside>
+    </header>
+     
+    
+
+<article itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+        <h1 itemprop="headline">The Secret Life of Cryptographic Properties</h1>
+        <data class="muted">
+    <svg class="icon i-clock" viewBox="0 0 32 32"
+         width="16" height="16" fill="none" stroke="currentcolor"
+         stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+        <circle cx="16" cy="16" r="14"/>
+        <path d="M16 8 L16 16 20 20"/>
+    </svg>
+    <data>5 minute read</data>
+    <svg class="icon i-edit" viewBox="0 0 32 32"
+         width="16" height="16" fill="none" stroke="currentcolor"
+         stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+        <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z"/>
+    </svg>
+
+    Published: 27.6.2026
+</data>
+    </header>
+
+    <article itemprop="articleBody">
+        
+            <!-- If no summary separate from content, just render content -->
+            <blockquote>
+<p><em>“What do you want me to do, stop encrypting?</em>
+<em>Then the attackers will keep winning!”</em></p>
+</blockquote>
+<p>— (Almost) every security engineer at 2 a.m.</p>
+<hr />
+<h2 id="first-a-quick-confession">First, a quick confession</h2>
+<p>I’ve watched perfectly intelligent people mutter <em>“we use TLS, we’re safe”</em> while shipping source code over public Wi-Fi. I’ve seen product managers swear that a GDPR checkbox magically invokes the spirit of Alan Turing to bless their SaaS. And I’ve sat through more than one meeting where someone confused <em>integrity</em> with “put the file on S3 and hope for the best.”</p>
+<p>If any of that sounds familiar, buckle up. We’re about to tour the <strong>fifteen security properties that turn “encrypted” into actually-robust communications</strong>—but in plain English, with a dash of gallows humour, and absolutely zero PowerPoint gradients.</p>
+<hr />
+<h1 id="1-confidentiality-the-art-of-mind-your-own-business">1. Confidentiality: the art of mind-your-own-business</h1>
+<p>Huge shocker: scrambling data so eavesdroppers can’t read it. You’ve met AES-GCM in TLS and ChaCha20-Poly1305 in every mobile messenger worth its salt. Without it, your login token is basically a bumper sticker for hackers that reads “steal me.”</p>
+<h1 id="2-integrity-tamper-tape-for-packets">2. Integrity: tamper tape for packets</h1>
+<p>Encryption hides what you said; integrity (HMACs, AEAD tags) proves no-one rewrote it to <em>“send all funds to 0xDEADBEEF.”</em> One flipped bit? Connection terminated, developer mildly panics, nobody gets robbed. Good trade.</p>
+<h1 id="3-authentication-a-secret-handshake-that-actually-works">3. Authentication: a secret handshake that actually works</h1>
+<p>Knowing <em>who</em> you’re talking to matters. Certificates, SSH host keys, WebAuthn tokens—they all shout “I am the droid you’re looking for.” Skip this and congratulations: you’ve built an unencrypted postcard exchange with extra steps.</p>
+<h1 id="4-non-repudiation-the-adulting-feature">4. Non-repudiation: the adulting feature</h1>
+<p>Digital signatures that survive courtroom cross-examination. Great for contracts, invoices, and those times when someone emails <em>“deploy-to-prod, trust me”</em> and later swears they never said that. Spoiler: the log says otherwise.</p>
+<h1 id="5-availability-because-downtime-security">5. Availability: because downtime ≠ security</h1>
+<p>A service that’s “secure” but 404s under a sneeze is just an expensive doorstop. Rate-limit, add captchas, maybe sprinkle in client puzzles so the botnets burn calories while real users keep chatting.</p>
+<h1 id="6-access-control-vip-ropes-at-the-crypto-club">6. Access control: VIP ropes at the crypto club</h1>
+<p>It’s not enough to lock the front door; you need bouncers inside too. Capability tokens, short-lived OAuth scopes—whatever prevents the analytics micro-service from reading HR’s salary CSV at 3 a.m.</p>
+<h1 id="7-forward-secrecy-protecting-yesterday-from-tomorrow-s-breach">7. Forward secrecy: protecting yesterday from tomorrow’s breach</h1>
+<p>Compromise the server key next week and last week’s messages remain unreadable. That’s ECDHE or X25519 doing daily key-burning rituals on your behalf. The Ops team sleeps better; auditors still find something else to nag about.</p>
+<h1 id="8-backward-future-secrecy-new-phone-who-dis-for-keys">8. Backward (future) secrecy: “new phone, who dis?”—for keys</h1>
+<p>Flip side of forward secrecy. If malware grabs <em>today’s</em> session key, it still can’t decipher <em>tomorrow’s</em> traffic because the protocol ratchets forward faster than your intruder can type <code>exfiltrate.sh</code>.</p>
+<h1 id="9-freshness-anti-replay-groundhog-day-prevention">9. Freshness &amp; anti-replay: groundhog day prevention</h1>
+<p>Attackers love pushing the <em>“pay again”</em> button. Nonces, sequence numbers, and timestamps ensure that yesterday’s valid packet is today’s suspicious deja vu and gets binned accordingly.</p>
+<h1 id="10-deniability-off-the-record-on-purpose">10. Deniability: off-the-record, on purpose</h1>
+<p>Signal and OTR let you verify a live conversation yet later say <em>“could’ve been anyone.”</em> Journalists appreciate it. Compliance officers develop a rash. Choose your adventure.</p>
+<h1 id="11-traffic-flow-confidentiality-hiding-the-who-when-how-much">11. Traffic-flow confidentiality: hiding the <strong>who/when/how much</strong></h1>
+<p>Encrypting payloads is cute; hiding metadata is survival. Mix-nets, onion routing, and good old-fashioned padding blur the social graph so well that even your phone bill gets jealous.</p>
+<h1 id="12-anonymity-unlinkability-cloak-of-invisibility-version-2-0">12. Anonymity &amp; unlinkability: cloak of invisibility, version 2.0</h1>
+<p>Ring signatures, zero-knowledge proofs—math that lets you prove you’re <em>someone</em> in the group without outing <em>which</em> someone. Perfect for whistle-blowers; less ideal for loyalty-card programs.</p>
+<h1 id="13-auditability-the-black-box-recorder">13. Auditability: the black box recorder</h1>
+<p>Sometimes you need receipts. Signed, append-only logs (hello, Certificate Transparency) can prove that a certificate or precertificate was logged and help monitors catch misissuance. Useful accountability, yes; a magic who-did-what-when camera, no—and public CT entries still expose certificate metadata.</p>
+<h1 id="14-perfect-secrecy-because-claude-shannon-was-extra">14. Perfect secrecy: because Claude Shannon was extra</h1>
+<p>One-time pads guarantee zero information leakage—provided your key is as long as the message, randomly generated, and never reused. In the real world that’s like fueling your car with unicorn tears: admirable, impractical, but a nice benchmark.</p>
+<h1 id="15-robustness-crypto-that-doesn-t-face-plant-on-packet-loss">15. Robustness: crypto that doesn’t face-plant on packet loss</h1>
+<p>Fault-tolerant group chat, AEAD modes that fail closed, Byzantine-resilient consensus—because networks drop packets, people yank plugs, and your protocol must keep calm and carry on.</p>
+<hr />
+<h2 id="how-the-sausage-gets-wrapped">How the sausage gets wrapped</h2>
+<p>No single protocol sports <em>all</em> fifteen properties; life is trade-offs. TLS 1.3 nails confidentiality, integrity, authentication, and forward secrecy in one handshake but punts on anonymity. Signal piles on deniability and backward secrecy yet can’t satisfy auditors hunting non-repudiation. Pick the mix that fits your threat model:</p>
+<ul>
+<li><strong>Corporate e-signing?</strong> Favour non-repudiation and audit logs.</li>
+<li><strong>Messaging under authoritarian regimes?</strong> Double down on anonymity and deniability.</li>
+<li><strong>Banking APIs?</strong> Throw the whole kitchen sink in, add rate-limits, stash a lawyer onsite.</li>
+</ul>
+<h2 id="parting-wisdom-the-sticky-note-version">Parting wisdom (the sticky-note version)</h2>
+<ol>
+<li><strong>Encrypt everything, authenticate everyone.</strong> Skipping either is how data breaches get origin stories.</li>
+<li><strong>Rotate keys like gym towels.</strong> Fresh keys smell nicer to your CISO.</li>
+<li><strong>Metadata leaks faster than plaintext.</strong> Pad, mix, relay. Repeat.</li>
+<li><strong>Logs or it didn’t happen.</strong> But log the right things, lest privacy come for your badge.</li>
+<li><strong>Assume failure, design for grace.</strong> The Internet is powered by coffee and duct tape; your protocol must survive both running out.</li>
+</ol>
+<p>Now go forth, weld these properties into your next product, and when someone says <em>“it’s fine, Slack is encrypted, right?”</em>, you’ll have fifteen articulate reasons to schedule an emergency architecture review—plus the professional gravitas to pull it off without memes (unless the memes help; they often do).</p>
+
+        
+    </article>
+
+    <!-- Comment section -->
+    
+      
+    
+
+
+    
+        <footer>
+            <hr>
+            <p>
+                
+                
+                
+                    
+                    tagged
+                    
+                        <a href="https://famoto.github.io/tags/security/">security</a>
+                        
+                            
+                                
+                                    and
+                                
+                            
+                        
+                    
+                        <a href="https://famoto.github.io/tags/cryptographie/">cryptographie</a>
+                        
+                            
+                        
+                    
+                
+            </p>
+            
+            
+        </footer>
+    
+</article>
+
+
+
+    <!-- optional scripts -->
+     
+    <script src="https://famoto.github.io/js/codeblock.js"></script>
+     
+    <script src="https://famoto.github.io/js/toggle-theme.js"></script>
+     
+ 
+<script type="text/javascript" src="https://famoto.github.io/js/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://famoto.github.io/js/search.js"></script>
+ 
+  </body>
+</html>

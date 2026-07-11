@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <!-- Enable responsiveness on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+    <meta name="description" content="A nerd about everything" />
+    <meta property="og:description" content="A nerd about everything" />
+    <meta property="twitter:description" content="A nerd about everything" />
+    
+
+    <!-- Title -->
+      
+
+    <title>
+    
+    Choosing the Right Parameters for Argon2id Password Hashing
+    
+</title>
+
+    <!-- Additional Facebook Meta Tags -->
+    <meta
+      property="og:url"
+      content="https:&#x2F;&#x2F;famoto.github.io&#x2F;argon2id-parameters&#x2F;"
+    />
+    <meta
+      property="og:type"
+      content="article"
+    />
+    <meta property="og:title" content="Choosing the Right Parameters for Argon2id Password Hashing" />
+    <meta
+      property="og:image"
+      content="https:&#x2F;&#x2F;famoto.github.io/icons/favicon/web-app-manifest-512x512.avif"
+    />
+
+    <!-- Additional Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      property="twitter:url"
+      content="https:&#x2F;&#x2F;famoto.github.io&#x2F;argon2id-parameters&#x2F;"
+    />
+    <meta name="twitter:title" content="Choosing the Right Parameters for Argon2id Password Hashing" />
+    <meta
+      name="twitter:image"
+      content="https:&#x2F;&#x2F;famoto.github.io/icons/favicon/web-app-manifest-512x512.avif"
+    />
+
+    <!-- Favicons -->
+    
+    <link
+      rel="icon"
+      type="image/avif"
+      href="https:&#x2F;&#x2F;famoto.github.ioicons/favicon/favicon-96x96.avif"
+      sizes="96x96"
+    />
+    <link
+      rel="icon"
+      type="image/avif"
+      href="https:&#x2F;&#x2F;famoto.github.ioicons/favicon/favicon.avif"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="https:&#x2F;&#x2F;famoto.github.ioicons/favicon/apple-touch-icon.avif"
+    />
+    <meta name="apple-mobile-web-app-title" content="Choosing the Right Parameters for Argon2id Password Hashing" />
+    <link
+      rel="manifest"
+      href="https:&#x2F;&#x2F;famoto.github.ioicons/favicon/site.webmanifest"
+    />
+    
+
+    <!-- RSS Feed -->
+    
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="RSS"
+      href="https://famoto.github.io/rss.xml"
+    />
+    
+
+    <!-- Load Styles -->
+    <link
+      rel="stylesheet"
+      href="https://famoto.github.io/site.css"
+    />
+
+    <!-- Pass Theme Preference as Data Attribute -->
+    <script>
+      document.documentElement.dataset.theme =
+        "toggle";
+    </script>
+
+    <!-- Reference return to click position script -->
+    <script src="https://famoto.github.io/js/reference-return.js"></script>
+  </head>
+
+  <body class="hack dark main container">
+    
+    
+         
+    <header class="nav-header">
+      <nav
+        itemscope
+        itemtype="http://schema.org/SiteNavigationElement"
+        class="navbar"
+      >
+        <section class="nav-links">
+          
+          <a
+            itemprop="url"
+            class=""
+            href="https://famoto.github.io"
+          >
+            <span itemprop="name">Blog</span>
+          </a>
+          
+          <a
+            itemprop="url"
+            class=""
+            href="https://famoto.github.io/tags"
+          >
+            <span itemprop="name">Tags</span>
+          </a>
+          
+        </section>
+      </nav>
+      <aside class="user-actions-container">
+        
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          class="search-icon"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+          />
+        </svg>
+        <input type="text" id="search" placeholder="Search..." />
+        <section class="search-results" aria-live="polite">
+          <article class="search-results__items" role="list"></article>
+        </section>
+         
+        <a id="dark-mode-toggle" href="#">
+          <img
+            src="https://famoto.github.io/icons/sun.svg"
+            id="sun-icon"
+            alt="Light mode"
+          />
+          <img
+            src="https://famoto.github.io/icons/moon.svg"
+            id="moon-icon"
+            alt="Dark mode"
+          />
+        </a>
+         
+        <a
+          href="https://famoto.github.io/rss.xml"
+          class="feed-icon"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="https://famoto.github.io/icons/rss.svg"
+            id="rss-icon"
+            alt="RSS feed"
+            class="social-icon"
+          />
+        </a>
+         
+        <a
+          href="https:&#x2F;&#x2F;github.com&#x2F;Famoto&#x2F;"
+          class="feed-icon"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="https://famoto.github.io/icons/github.svg"
+            id="github-icon"
+            alt="GitHub"
+            class="social-icon"
+          />
+        </a>
+        
+      </aside>
+    </header>
+     
+    
+
+<article itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+        <h1 itemprop="headline">Choosing the Right Parameters for Argon2id Password Hashing</h1>
+        <data class="muted">
+    <svg class="icon i-clock" viewBox="0 0 32 32"
+         width="16" height="16" fill="none" stroke="currentcolor"
+         stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+        <circle cx="16" cy="16" r="14"/>
+        <path d="M16 8 L16 16 20 20"/>
+    </svg>
+    <data>5 minute read</data>
+    <svg class="icon i-edit" viewBox="0 0 32 32"
+         width="16" height="16" fill="none" stroke="currentcolor"
+         stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+        <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z"/>
+    </svg>
+
+    Published: 27.6.2026
+</data>
+    </header>
+
+    <article itemprop="articleBody">
+        
+            <!-- If no summary separate from content, just render content -->
+            <p>Argon2id is one of the most secure options for password storage. Its memory-hard design frustrates GPU cracking, yet the algorithm is flexible enough to run efficiently on commodity hardware. Picking good parameters, however, is critical. The goal is to slow down attackers as much as possible while keeping legitimate logins snappy.</p>
+<h1 id="key-parameters-in-argon2id">Key Parameters in Argon2id</h1>
+<p>Argon2id exposes three knobs:</p>
+<ul>
+<li><strong>Time cost (T)</strong> – how many times the memory is filled and processed.</li>
+<li><strong>Memory cost (M)</strong> – how much RAM in kibibytes each hash consumes.</li>
+<li><strong>Parallelism (p)</strong> – the number of threads used.</li>
+</ul>
+<p>T and M together determine the real cost for an attacker. Raising either one increases the work required to compute a single hash. In practice, you want to push both as high as your environment will allow without degrading the user experience.</p>
+<h1 id="benchmarking-your-environment">Benchmarking Your Environment</h1>
+<p>Start by measuring how fast Argon2id runs with different values. Most libraries provide a benchmarking mode. With the reference <code>argon2</code> binary, pass a password on stdin, provide a salt, and select Argon2id explicitly:</p>
+<pre class="giallo z-code"><code data-lang="shellscript"><span class="giallo-l"><span class="z-support">echo</span><span class="z-constant"> -</span><span class="z-constant">n</span><span class="z-punctuation z-definition z-string z-punctuation z-definition z-string z-begin"> &quot;</span><span class="z-string">password</span><span class="z-punctuation z-definition z-string z-punctuation z-definition z-string z-end">&quot;</span><span class="z-keyword"> |</span><span class="z-entity z-name z-entity z-name z-function"> argon2</span><span class="z-string"> somesalt</span><span class="z-constant"> -</span><span class="z-constant">id</span><span class="z-constant"> -</span><span class="z-constant">t</span><span class="z-constant"> 3</span><span class="z-constant"> -</span><span class="z-constant">m</span><span class="z-constant"> 15</span><span class="z-constant"> -</span><span class="z-constant">p</span><span class="z-constant"> 1</span></span></code></pre>
+<p>This will hash using <code>t=3</code>, <code>m=2^15 KiB</code> (<code>32_768 KiB</code>, or 32 MiB), and <code>p=1</code>. Note the runtime, then adjust <code>-t</code> and <code>-m</code> higher or lower and run again. Record how long each combination takes so you understand the trade-offs.</p>
+<p>Aim for a target runtime per hash of somewhere between <strong>200–500 ms</strong> on your production hardware. Values in that range are short enough that a user login feels immediate, yet they make large-scale cracking expensive.</p>
+<h1 id="argon2id-vs-gpu-cracking">Argon2id vs GPU Cracking</h1>
+<p>Specialized cracking rigs rely on GPUs or FPGAs to compute billions of hashes in parallel. Argon2id's memory hardness undercuts that advantage by forcing each password guess to repeatedly read and write a big region of RAM. GPUs have tremendous compute power but relatively little memory per core. When <code>M</code> is set high, they must constantly swap data, which destroys their throughput. CPUs, with easier access to main memory, handle these workloads with much less slowdown.</p>
+<p>Beyond that, Argon2id requires filling memory with pseudorandom data for every password guess. Attackers can't reuse one block of memory for all candidates, so the cost multiplies with each attempt. That property, combined with strong memory requirements, makes large-scale GPU attacks far less attractive.</p>
+<h1 id="balancing-t-and-m">Balancing T and M</h1>
+<p>When tuning, prioritize memory first. Increasing <code>M</code> dramatically raises the barrier for GPUs and FPGAs because those platforms are often memory limited. Try to allocate at least <strong>64 MiB</strong> if your servers have the RAM to spare. In the reference CLI this is <code>-m 16</code>; in an encoded Argon2 hash, the same setting appears as <code>m=65536</code> because the PHC string stores memory in kibibytes. Many modern systems can comfortably handle <code>128 MiB</code> or more for each concurrent hash.</p>
+<p>Once memory is set, adjust the time cost. A higher <code>T</code> multiplies the work required without extra memory overhead. For web logins you generally want the combined runtime of <code>T</code> and <code>M</code> to fall under half a second. If you have plenty of CPU headroom you can push toward the upper end of the target range. If your server is under heavy load, dropping <code>T</code> slightly keeps response times consistent.
+In practice, <code>M</code> shapes the attacker's hardware choices, while <code>T</code> dictates how long each attempt takes. GPUs excel at running thousands of threads but they must share limited memory bandwidth. By forcing every thread to access large chunks of RAM, you neutralize that parallel edge. Once you know how much memory you can spare per hash, increase <code>T</code> until CPU usage or page latency becomes noticeable. This lets you push <code>M</code> as high as possible and then tune <code>T</code> to hit your target runtime without hurting the user experience.</p>
+<p>Always test with the same parallelism that production will use. Argon2's <code>m</code> is the total memory for one hash; <code>p</code> splits that memory across lanes or threads rather than multiplying it. Concurrent login requests do multiply memory use, so ten simultaneous <code>64 MiB</code> hashes can require about <code>640 MiB</code> before application overhead. Monitor memory usage while benchmarking so you do not accidentally starve other processes.</p>
+<h2 id="example-tuning-session">Example Tuning Session</h2>
+<ol>
+<li>Start with <code>-m 16</code> (64 MiB in the reference CLI) and <code>t=2</code>.</li>
+<li>Measure the runtime. If it is well below 200 ms, raise <code>m</code> first—try <code>-m 17</code> (128 MiB in the reference CLI).</li>
+<li>If memory is maxed out but runtime is still low, increment <code>t</code> until you approach 300–400 ms per hash.</li>
+<li>If the server begins to slow under load, scale back <code>t</code> slightly but keep memory high.</li>
+</ol>
+<p>By iterating like this you can zero in on parameters that maximize attacker cost without annoying your users.</p>
+<h1 id="storing-parameters-alongside-hashes">Storing Parameters Alongside Hashes</h1>
+<p>A common practice is to store the chosen <code>t</code>, <code>m</code>, and <code>p</code> with each user's password hash. That way you can increase defaults for new accounts without forcing resets. It also lets you adapt if hardware improves or if you deploy to stronger servers in the future.</p>
+<h1 id="personal-approach">Personal Approach</h1>
+<p>My strategy is simple: begin with OWASP's minimum recommended settings, then push <code>m</code> and <code>t</code> upward until my hardware or response times start to complain. The maximum values the server can handle form the upper bound. From there I dial back toward the minimums until logins feel instantaneous. Meeting in the middle offers a comfortable balance—large enough to frustrate crackers, yet still snappy for real users.</p>
+<h1 id="conclusion">Conclusion</h1>
+<p>Argon2id's strength comes from its tunable memory and time requirements. For strong security:</p>
+<ul>
+<li>Allocate as much memory as your servers can tolerate, ideally 64–128 MiB per hash.</li>
+<li>Increase the time cost until each hash takes roughly 200–500 ms under typical load.</li>
+<li>Revisit these settings periodically and adjust upward as hardware becomes faster.</li>
+</ul>
+<p>A careful balance of <code>T</code> and <code>M</code> provides maximum resistance to password cracking while keeping login performance smooth.</p>
+
+        
+    </article>
+
+    <!-- Comment section -->
+    
+      
+    
+
+
+    
+        <footer>
+            <hr>
+            <p>
+                
+                
+                
+                    
+                    tagged
+                    
+                        <a href="https://famoto.github.io/tags/security/">security</a>
+                        
+                            
+                                
+                                    ,
+                                
+                            
+                        
+                    
+                        <a href="https://famoto.github.io/tags/argon2id/">argon2id</a>
+                        
+                            
+                                
+                                    and
+                                
+                            
+                        
+                    
+                        <a href="https://famoto.github.io/tags/passwords/">passwords</a>
+                        
+                            
+                        
+                    
+                
+            </p>
+            
+            
+        </footer>
+    
+</article>
+
+
+
+    <!-- optional scripts -->
+     
+    <script src="https://famoto.github.io/js/codeblock.js"></script>
+     
+    <script src="https://famoto.github.io/js/toggle-theme.js"></script>
+     
+ 
+<script type="text/javascript" src="https://famoto.github.io/js/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://famoto.github.io/js/search.js"></script>
+ 
+  </body>
+</html>
