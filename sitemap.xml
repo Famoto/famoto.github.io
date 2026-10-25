@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://famoto.github.io/</loc>
+    </url>
+    <url>
+        <loc>https://famoto.github.io/argon2id-parameters/</loc>
+        <lastmod>2026-06-27</lastmod>
+    </url>
+    <url>
+        <loc>https://famoto.github.io/cryptographic-properties/</loc>
+        <lastmod>2026-06-27</lastmod>
+    </url>
+    <url>
+        <loc>https://famoto.github.io/page/1/</loc>
+    </url>
+    <url>
+        <loc>https://famoto.github.io/tags/</loc>
+    </url>
+    <url>
+        <loc>https://famoto.github.io/tags/argon2id/</loc>
+    </url>
+    <url>
+        <loc>https://famoto.github.io/tags/cryptographie/</loc>
+    </url>
+    <url>
+        <loc>https://famoto.github.io/tags/passwords/</loc>
+    </url>
+    <url>
+        <loc>https://famoto.github.io/tags/security/</loc>
+    </url>
+</urlset>
